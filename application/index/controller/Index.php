@@ -21,7 +21,7 @@ class Index extends Base
         $iv = input("iv", '', 'htmlspecialchars_decode');
 
         $APPID = 'wx9babc5f031633181';
-        $AppSecret = '39f5f857020a62cc92849b8f5cffe4e2';
+        $AppSecret = '63e60bd76092dcdb2a0867ba6eea52b5';
         $wx_request_url = 'https://api.weixin.qq.com/sns/jscode2session';
         $params = [
             'appid' => $APPID,
@@ -77,4 +77,5 @@ class Index extends Base
 
         return json($data);
     }
+
 }
