@@ -74,6 +74,20 @@ class Wx extends Base
 //        return $login_id;
     }
 
+    public function write_login_md5(){
+        $wx_login_id = $_POST['wx_login_id'];
+        $md5_qr = $_POST['md5_qr'];
+        $update['md5_qr'] = $md5_qr;
+        $where['id'] = $wx_login_id;
+        $sql = Db::table('wx_login')->where($where)->update($update);
+        if($sql){
+            return 'ok';
+        }else{
+            return 'fail';
+        }
+
+    }
+
     public function button_up(){
 
     }
