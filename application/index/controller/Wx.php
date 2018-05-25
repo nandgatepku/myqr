@@ -14,7 +14,6 @@ class Wx extends Base
         $signature = input("signature", '', 'htmlspecialchars_decode');
         $encryptedData = input("encryptedData", '', 'htmlspecialchars_decode');
         $iv = input("iv", '', 'htmlspecialchars_decode');
-        $md5_qr = input("md5_qr");
 
         $APPID = 'wx9babc5f031633181';
         $AppSecret = '63e60bd76092dcdb2a0867ba6eea52b5';
@@ -59,10 +58,9 @@ class Wx extends Base
         $insert['province'] = $wr -> province;
         $insert['country'] = $wr -> country;
         $insert['avatarUrl'] = $wr -> avatarUrl;
-        $insert['md5_qr'] = $md5_qr;
         $insert['login_time'] = date('Y-m-d H:i:s', time());
 
-        Db::table('wx_login')->insert($insert);
+        $login_id = Db::table('wx_login')->getLastInsID($insert);
 
 //	return json(ret_message("here"));
 
@@ -72,7 +70,8 @@ class Wx extends Base
 //        $data['session3rd'] = $session3rd;
 //        cache($session3rd, $data['openId'] . $sessionKey);
 
-        return json($data);
+//        return json($data);
+        return $login_id;
     }
 
     public function button_up(){
