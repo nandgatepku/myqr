@@ -109,6 +109,15 @@ class Login extends Base
         }
     }
 
+    public function look_scan(){
+        $md5_qr = $_POST['md5_qr'];
+//        $md5_qr  = '88f4d6a5b2ac98b700fa06f1b579b61a';
+        $where['md5_qr'] = $md5_qr;
+        $scan = Db::table('wx_login')->where($where)->field('nickName,login_time')->select();
+//        return json($scan);
+        return json($scan);
+    }
+
 
 
 }
