@@ -67,11 +67,11 @@ class Wechat extends Base
         return $token;
     }
 
-    public function get_qrcode($studentid=1701210403){
+    public function get_qrcode($md5_user){
         $token = $this->get_token();
         $url = 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token='.$token;
 
-        $data_tmp = ["scene"=>$studentid];
+        $data_tmp = ["scene"=>$md5_user];
         $data = json_encode($data_tmp);
         $opts = array(
             CURLOPT_TIMEOUT        => 30,
@@ -104,12 +104,14 @@ class Wechat extends Base
         //发生错误，抛出异常
         if($error) throw new \Exception('请求发生错误：' . $error);
 
-        $ok = file_put_contents('static/qrcode/'.$studentid.'data.jpg', $data);
-        if($ok){
-            return 'ok';
-        }else{
-            return $data;
-        }
+//        $ok = file_put_contents('static/qrcode/'.$studentid.'data.jpg', $data);
+//        if($ok){
+//            return 'ok';
+//        }else{
+//            return $data;
+//        }
+
+        return $data;
 
     }
 
