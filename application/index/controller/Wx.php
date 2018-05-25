@@ -60,7 +60,7 @@ class Wx extends Base
         $insert['avatarUrl'] = $wr -> avatarUrl;
         $insert['login_time'] = date('Y-m-d H:i:s', time());
 
-        $login_id = Db::table('wx_login')->getLastInsID($insert);
+        $login_id = Db::table('wx_login')->insertGetId($insert);
 
 //	return json(ret_message("here"));
 
