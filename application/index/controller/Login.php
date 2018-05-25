@@ -38,12 +38,11 @@ class Login extends Base
         $insert['md5'] = $md5_user;
 
         $db_insert = Db::table('web_login')->insert($insert);
-
         $qr_data = action('Wechat/get_qrcode',['md5_user'=>$md5_user]);
-
         $ok = file_put_contents('static/qrcode/'.$md5_user.'.jpg', $qr_data);
 
-        return $qr_data;
+        $this->assign('md5_user',$md5_user);
+        return $this->fetch('login');
 
 //        return $this->fetch('login');
     }
