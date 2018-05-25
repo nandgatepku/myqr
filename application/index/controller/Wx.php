@@ -70,8 +70,8 @@ class Wx extends Base
 //        $data['session3rd'] = $session3rd;
 //        cache($session3rd, $data['openId'] . $sessionKey);
 
-//        return json($data);
-        return $login_id;
+        return json($data);
+//        return $login_id;
     }
 
     public function button_up(){
