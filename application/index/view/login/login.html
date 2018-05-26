@@ -5,7 +5,7 @@
     <title>nandgate安全验证测试系统</title>
 </head>
 <body>
-<p style="text-align:center;">欢迎您</p>
+<p style="text-align:center;">欢迎您。<a href="{:url('Index/index')}">返回首页</a></p>
 <p style="text-align:center"><img src="__STATIC__/qrcode/<?php echo $md5_user;?>.jpg" width="20%"></p>
 <!--<img src="__ROOT__/data.jpg" />-->
 <p style="text-align:center;">微信扫描二维码进入<b>安全验证系统</b></p>
@@ -17,8 +17,8 @@
 </body>
 <script src="__STATIC__/js/jquery.min.js"></script>
 <script type="text/javascript">
-    // var md5_qr = "{$md5_user}";
-    var md5_qr = "88f4d6a5b2ac98b700fa06f1b579b61a";
+    var md5_qr = "{$md5_user}";
+    // var md5_qr = "88f4d6a5b2ac98b700fa06f1b579b61a";
     var jsonstr = '{"md5_qr":"' + md5_qr + '"}';
     var jsonobj = eval ("(" + jsonstr + ")");
     $("#md5_qr").append(jsonstr);
